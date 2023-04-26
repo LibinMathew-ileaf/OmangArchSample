@@ -1,6 +1,5 @@
 package com.example.omangarchsample.repository
 
-import android.util.Log
 import com.example.omangarchsample.NetworkResult
 import com.example.omangarchsample.database.LocalDataSource
 import com.example.omangarchsample.model.remote.UserApiModel

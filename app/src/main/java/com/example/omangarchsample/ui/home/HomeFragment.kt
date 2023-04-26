@@ -7,6 +7,8 @@ import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.omangarchsample.adapters.UsersRecyclerViewAdapter
 import com.example.omangarchsample.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,8 +28,15 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         homeViewModel.fetchUser()
+        val myRecyclerViewAdapter = UsersRecyclerViewAdapter(homeViewModel.userList.value!!, requireContext())
+        val layoutManager = LinearLayoutManager(requireContext())
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.ryUsers.also {
+            it.layoutManager=layoutManager
+            it.adapter=(myRecyclerViewAdapter)
+        }
         homeViewModel.userList.observe(viewLifecycleOwner) {
-
+            myRecyclerViewAdapter.notifyDataSetChanged()
         }
         return root
     }
