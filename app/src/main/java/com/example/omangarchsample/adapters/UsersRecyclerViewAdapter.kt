@@ -32,7 +32,7 @@ class UsersRecyclerViewAdapter(private val userList: List<User>, private val con
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = userList[position]
         holder.bind(user)
-        holder.itemRowBinding.itemClickListener = this;
+        holder.itemRowBinding.itemClickListener = this
     }
 
     override fun getItemCount(): Int {
