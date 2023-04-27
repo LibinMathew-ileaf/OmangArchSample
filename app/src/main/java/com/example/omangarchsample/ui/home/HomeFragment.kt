@@ -32,10 +32,11 @@ class HomeFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.ryUsers.also {
-            it.layoutManager=layoutManager
+            it.layoutManager = layoutManager
             it.adapter=(myRecyclerViewAdapter)
         }
         homeViewModel.userList.observe(viewLifecycleOwner) {
+            myRecyclerViewAdapter.setUserList(it)
             myRecyclerViewAdapter.notifyDataSetChanged()
         }
         return root

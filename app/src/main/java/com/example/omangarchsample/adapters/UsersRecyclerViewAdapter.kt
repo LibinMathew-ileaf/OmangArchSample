@@ -16,7 +16,7 @@ import com.example.omangarchsample.R
 import com.example.omangarchsample.databinding.LayoutItemUserBinding
 import com.example.omangarchsample.model.database.User
 
-class UsersRecyclerViewAdapter(private val userList: List<User>, private val context: Context) :
+class UsersRecyclerViewAdapter(private var userList: List<User>, private val context: Context) :
     RecyclerView.Adapter<UsersRecyclerViewAdapter.ViewHolder>(), ClickListener {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,6 +27,9 @@ class UsersRecyclerViewAdapter(private val userList: List<User>, private val con
             R.layout.layout_item_user, parent, false
         )
         return ViewHolder(binding)
+    }
+    fun setUserList( userList: List<User>){
+        this.userList =userList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -57,7 +60,6 @@ class UsersRecyclerViewAdapter(private val userList: List<User>, private val con
         ).show()
     }
 }
-
  internal interface ClickListener {
     fun cardClicked(user: User?)
 }
